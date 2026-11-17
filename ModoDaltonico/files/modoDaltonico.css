@@ -1,0 +1,107 @@
+/* Modo Daltonico - Accessible color filters for MantisBT */
+
+/* --- Toggle button (floating) --- */
+.md-toggle-container {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	z-index: 10000;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 6px;
+}
+
+.md-toggle-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	border: 2px solid #555;
+	background: #fff;
+	color: #333;
+	font-size: 22px;
+	cursor: pointer;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+	transition: background 0.2s, border-color 0.2s;
+	line-height: 1;
+	padding: 0;
+}
+
+.md-toggle-btn:hover,
+.md-toggle-btn:focus {
+	background: #e0e0e0;
+	outline: 2px solid #005fcc;
+	outline-offset: 2px;
+}
+
+.md-toggle-btn[aria-pressed="true"] {
+	background: #005fcc;
+	color: #fff;
+	border-color: #003d99;
+}
+
+/* --- Mode selector dropdown --- */
+.md-mode-selector {
+	display: none;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	padding: 6px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.md-mode-selector.md-visible {
+	display: block;
+}
+
+.md-mode-selector select {
+	padding: 4px 8px;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	font-size: 13px;
+	background: #fff;
+	color: #333;
+}
+
+/* --- Active badge / indicator --- */
+.md-badge {
+	display: none;
+	position: fixed;
+	bottom: 74px;
+	right: 20px;
+	z-index: 10000;
+	background: #005fcc;
+	color: #fff;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 3px 10px;
+	border-radius: 12px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+	pointer-events: none;
+}
+
+.md-badge.md-badge-active {
+	display: block;
+}
+
+/* ============================================================
+   SVG filter definitions applied to <html> via CSS filter.
+   These use color-matrix values optimized for each type of CVD.
+   The filter property does NOT modify element colors directly;
+   it re-maps the rendered output at the compositor level.
+   ============================================================ */
+
+html.md-protanopia {
+	filter: url(#md-filter-protanopia);
+}
+
+html.md-deuteranopia {
+	filter: url(#md-filter-deuteranopia);
+}
+
+html.md-tritanopia {
+	filter: url(#md-filter-tritanopia);
+}
